@@ -7,12 +7,26 @@ import ReplyIcon from '@material-ui/icons/Reply';
 
 function Header() {
     return (
-        <div>
-        <MenuIcon />    
-        <input type="text"/>
-        <YoutubeSearchedForIcon/>
-        <AddCommentIcon/>
-        <ReplyIcon/>
+        <div className="header">
+            <div className="header__left">
+                <MenuIcon />
+            </div>
+            <div className="header__input">
+
+                <input type="text" />
+                <YoutubeSearchedForIcon />
+            </div>
+            <div className="video__player">
+
+            </div>
+            <div className="enter__comment">
+                <AddCommentIcon />
+                <ReplyIcon />
+            </div>
+
+
+
+
         </div>
     )
 }
