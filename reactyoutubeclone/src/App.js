@@ -5,7 +5,8 @@ import Sidebar from "./Sidebar.js";
 import Top25Videos from "./Top25Videso.js";
 // import youTube from './api/youtube';
 import { Grid } from '@material-ui/core';
-import {SearchBar, VideoDetail, VideoList} from "./components";
+import SearchBar from "./components/SearchBar";
+import VideoDetail from "./components/VideoDetail";
 
 
 function App() {
