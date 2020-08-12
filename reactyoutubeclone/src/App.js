@@ -1,24 +1,44 @@
 import React from 'react';
 import "./App.css";
 import Header from "./Header.js";
-// import Sidebar from "./Sidebar.js";
-// import Sidebar from "./Top25Videos.js"
+import Sidebar from "./Sidebar.js";
+import Top25Videos from "./Top25Videso.js";
+import youTube from './api/youtube';
+import { Grid } from '@material-ui/core';
+import {SearchBar, VideoList, VideoDetail} from './components';
+
 
 function App() {
-  function fetchData(){
-    //makes axios request
-    //assign response data to prop
-  }
+  // function fetchData(){
+  //makes axios request
+  //assign response data to prop
+
   return (
-    <div className="Header">
-      <Header />
-      <div className="app__page">
-        <Sidebar />
-        <Top25Videos videosData={this.fetchData()}/>
-      </div>
+
+    <Grid justify="center" container spacing={16}>
+      <Grid item xs={12}>
+        <Grid container spacing={16}>
+          <Grid item xs={12}>
+          </Grid>
+          <Grid item xs={8}>
+          </Grid>
+          <Grid item xs={4}>
+          </Grid>
+        </Grid>
+      </Grid>
+    </Grid>
 
 
-      </div>
+    // <div className="Header">
+    //   <Header />
+    //   <div className="app__page">
+    //     <Sidebar />
+    //     <Top25Videos />
+    //   </div>
+
+
+    // </div> 
+  
   );
 }
 
