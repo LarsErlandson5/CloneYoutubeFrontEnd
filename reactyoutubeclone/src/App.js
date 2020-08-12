@@ -3,24 +3,38 @@ import "./App.css";
 import Header from "./Header.js";
 import Sidebar from "./Sidebar.js";
 import Top25Videos from "./Top25Videso.js";
-// import youTube from './api/youtube';
 import { Grid } from '@material-ui/core';
-import SearchBar from "./components/SearchBar";
-import VideoDetail from "./components/VideoDetail";
+import SearchBar from "./components/SearchBar.js";
+import VideoDetail from "./components/VideoDetail.js";
+import youtube from "./api/youtube.js";
 
 
-function App() {
-  // function fetchData(){
-  //makes axios request
-  //assign response data to prop
+class App extends React.Component {
+  
+    state = {
+      searchTerm:'',
+    }
+  handleSubmit = async (searchTerm) => {
+    const response = await youtube.get('search',{
+      params: {
+      part: 'snippet',
+      maxResults: 5,
+      key:"AIzaSyB_lXlpLKvWO4JXo2rQnGStK5ptBtnF7gA",
+      q:searchTerm,
+ } 
+});
+    console.log(response.data.items);
+     this.setState({videos: response.data.items, selectedVideo: response.data.items[0]});
+  }
 
+render(){
   return (
 
-    <Grid justify="center" container spacing={16}>
-      <Grid item xs={12}>
-        <Grid container spacing={16}>
-          <Grid item xs={12}>
-            <SearchBar></SearchBar>
+    <Grid justify="center" container spacing={10}>
+      <Grid item xs={5}>
+        <Grid container spacing={10}>
+          <Grid item xs={5}>
+            <SearchBar onFormSubmit={this.handleSubmit}></SearchBar>
           </Grid>
           <Grid item xs={8}>
             <VideoDetail></VideoDetail>
@@ -31,18 +45,8 @@ function App() {
       </Grid>
     </Grid>
 
-
-    // <div className="Header">
-    //   <Header />
-    //   <div className="app__page">
-    //     <Sidebar />
-    //     <Top25Videos />
-    //   </div>
-
-
-    // </div> 
-  
-  );
+ )
 }
 
+}
 export default App;
