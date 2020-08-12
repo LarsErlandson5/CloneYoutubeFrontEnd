@@ -3,9 +3,9 @@ import "./App.css";
 import Header from "./Header.js";
 import Sidebar from "./Sidebar.js";
 import Top25Videos from "./Top25Videso.js";
-import youTube from './api/youtube';
+// import youTube from './api/youtube';
 import { Grid } from '@material-ui/core';
-import {SearchBar, VideoList, VideoDetail} from './components';
+import {SearchBar, VideoDetail, VideoList} from "./components";
 
 
 function App() {
@@ -19,8 +19,10 @@ function App() {
       <Grid item xs={12}>
         <Grid container spacing={16}>
           <Grid item xs={12}>
+            <SearchBar></SearchBar>
           </Grid>
           <Grid item xs={8}>
+            <VideoDetail></VideoDetail>
           </Grid>
           <Grid item xs={4}>
           </Grid>
