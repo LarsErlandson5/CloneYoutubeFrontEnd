@@ -5,7 +5,7 @@ import Sidebar from "./Sidebar.js";
 import Top25Videos from "./Top25Videso.js";
 import { Grid } from '@material-ui/core';
 import SearchBar from "./components/SearchBar.js";
-import VideoDetail from "./components/VideoDetail.js";
+// import VideoDetail from "./components/VideoDetail.js";
 import youtube from "./api/youtube";
 import Checkbox from '@material-ui/core/Checkbox';
 import axios from 'axios';
@@ -20,7 +20,7 @@ class App extends React.Component {
   handleSubmit = (searchTerm) => {
     // console.log("SEARCH TERM", searchTerm);
     //debugger;
-    const API_KEY = "AIzaSyB_lXlpLKvWO4JXo2rQnGStK5ptBtnF7gA";
+    const API_KEY = process.env.apikey;
 
     axios.get(`https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&part=snippet&q=${searchTerm}`)
       .then(response => {
@@ -43,7 +43,7 @@ class App extends React.Component {
               <SearchBar onFormSubmit={this.handleSubmit}></SearchBar>
             </Grid>
             <Grid item xs={8}>
-              <VideoDetail myProp={this.state.response}></VideoDetail>
+              {/* <VideoDetail myProp={this.state.response}></VideoDetail> */}
             </Grid>
             <Grid item xs={4}>
             </Grid>
