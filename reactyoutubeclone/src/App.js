@@ -12,6 +12,10 @@ import axios from 'axios';
 
 
 class App extends React.Component {
+  constructor(){
+    super()
+    this.state = {response: ""}
+  }
 
   handleSubmit = (searchTerm) => {
     // console.log("SEARCH TERM", searchTerm);
@@ -20,7 +24,7 @@ class App extends React.Component {
 
     axios.get(`https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&part=snippet&q=${searchTerm}`)
       .then(response => {
-        this.setState({response})
+        this.setState({response: response.data.items[0].id.videoId})
         console.log("STATE SEARCHTERM", this.state.response);
 
       });
@@ -39,11 +43,11 @@ class App extends React.Component {
               <SearchBar onFormSubmit={this.handleSubmit}></SearchBar>
             </Grid>
             <Grid item xs={8}>
-              <VideoDetail></VideoDetail>
+              <VideoDetail myProp={this.state.response}></VideoDetail>
             </Grid>
             <Grid item xs={4}>
             </Grid>
-            {/* <Checkbox ></Checkbox> */}
+             <Checkbox ></Checkbox>
           </Grid>
         </Grid>
       </Grid>
