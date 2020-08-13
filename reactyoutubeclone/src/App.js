@@ -24,7 +24,7 @@ class App extends React.Component {
 
     axios.get(`https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&part=snippet&q=${searchTerm}`)
       .then(response => {
-        this.setState({response: response.data.items[0].id.videoId})
+        this.setState({response: response.data.items})
         console.log("STATE SEARCHTERM", this.state.response);
 
       });

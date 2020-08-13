@@ -6,7 +6,8 @@ class VideoDetail extends React.Component {
             const{myProp} = this.props;
         return (
             <div>
-                {myProp}
+                {myProp.map(myProp => <div key={myProp.id} {...myProp}/>)}
+                {myProp.length}
             </div>
         );
     }
