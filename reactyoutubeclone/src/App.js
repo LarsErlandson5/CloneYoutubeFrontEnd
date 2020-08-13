@@ -13,34 +13,26 @@ import axios from 'axios';
 
 class App extends React.Component {
 
-
-
-  handleSubmit = async (searchTerm) => {
-    console.log("SEARCH TERM", searchTerm);
+  handleSubmit = (searchTerm) => {
+    // console.log("SEARCH TERM", searchTerm);
     //debugger;
     const API_KEY = "AIzaSyB_lXlpLKvWO4JXo2rQnGStK5ptBtnF7gA";
 
-    // axios.get(`https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&part=snippet&q=${searchTerm}`)
-    // .then(response => console.log(response));
+    axios.get(`https://www.googleapis.com/youtube/v3/search?key=${API_KEY}&part=snippet&q=${searchTerm}`)
+      .then(response => {
+        this.setState({response})
+        console.log("STATE SEARCHTERM", this.state.response);
 
-    
-    const response = await axios.get('search', {
-      params: {
-        part: 'snippet',
-        maxResults: 5,
-        key: "AIzaSyB_lXlpLKvWO4JXo2rQnGStK5ptBtnF7gA",
-        q: searchTerm,
-      }
-    });
-    
-    console.log(response.data.items);
-   
+      });
+
+
+
   }
 
   render() {
     return (
 
-      <Grid justify="center" container spacing={16}>
+      <Grid justify="center" container spacing={9}>
         <Grid item xs={10}>
           <Grid container spacing={10}>
             <Grid item xs={5}>
@@ -51,16 +43,16 @@ class App extends React.Component {
             </Grid>
             <Grid item xs={4}>
             </Grid>
-              {/* <Checkbox ></Checkbox> */}
+            {/* <Checkbox ></Checkbox> */}
           </Grid>
         </Grid>
       </Grid>
-     
- 
 
- 
-    
-)
+
+
+
+
+    )
   }
 
 }
